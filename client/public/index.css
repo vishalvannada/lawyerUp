@@ -1,0 +1,16 @@
+.border-red{
+    border: 1px solid crimson !important;
+}
+
+.error-message{
+    color: crimson !important;
+}
+
+.app-form{
+    width: 33%;
+    margin: auto;
+}
+
+.hidden{
+    display: none !important;
+}
