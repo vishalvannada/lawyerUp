@@ -14,3 +14,11 @@
 .hidden{
     display: none !important;
 }
+
+.elevate{
+    z-index: 1000;
+}
+
+.gold{
+    color: goldenrod;
+}

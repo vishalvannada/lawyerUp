@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {logoutUser} from "../../actions/authActions";
 
 class Header extends Component {
 
@@ -11,7 +12,8 @@ class Header extends Component {
             <div>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div className="container">
-                        <Link to="/home" className="navbar-brand"><i className="fas fa-truck"/>
+                        <Link to="/home" className="navbar-brand">
+                            LawyerUp <i className="fas fa-gavel ml-2"/>
                         </Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarText"
@@ -41,10 +43,11 @@ class Header extends Component {
                                     <div className="dropdown-menu dropdown-menu-right"
                                          aria-labelledby="dropdownMenuLink">
                                         <Link className="dropdown-item" to="/profile">Profile</Link>
+                                        <Link className="dropdown-item" to="/availability">Availability</Link>
                                         <div className="dropdown-divider"></div>
                                         <button onClick={() => {
-                                            console.log("hg")
-                                        }} className="dropdown-item" href="#">Sign out
+                                            this.props.logoutUser();
+                                        }} className="dropdown-item">Sign out
                                         </button>
                                     </div>
                                 </div>
@@ -64,4 +67,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, null)(Header);
+export default connect(mapStateToProps, {logoutUser})(Header);

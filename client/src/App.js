@@ -7,6 +7,7 @@ import Login from './components/auth/login';
 import SignUp from './components/auth/signUp';
 import Profile from './components/profile/profile';
 import Error from './components/error';
+import Availability from './components/availability/availability';
 import PrivateRoute from './helpers/privateRoute';
 import AuthenticatedRoute from './helpers/authenticatedRoute';
 import './App.css';
@@ -22,6 +23,7 @@ class App extends Component {
                         <AuthenticatedRoute path="/login" component={Login}/>
                         <AuthenticatedRoute path="/signup" component={SignUp}/>
                         <PrivateRoute path="/home" component={Home}/>
+                        <PrivateRoute path="/availability" component={Availability}/>
                         <PrivateRoute path="/profile" component={Profile}/>
                         <Route path="*" component={Error}/>
                     </Switch>

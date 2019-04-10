@@ -18,7 +18,7 @@ router.get('/list', function (req, res, next) {
     console.log(req.get('Authorization'));
     console.log(jwt_decode(req.get('Authorization')));
     jwt.verify(req.get('Authorization'), keys.secretOrKey, (err, authorizedData) => {
-        if(err){
+        if (err) {
             //If error send Forbidden (403)
             console.log(err);
             console.log('ERROR: Could not connect to the protected route');
@@ -43,8 +43,8 @@ router.post("/register", (req, res) => {
 
     console.log(req.body);
 
-    const { errors, isValid } = validateRegisterInput(req.body);
-// Check validation
+    const {errors, isValid} = validateRegisterInput(req.body);
+    // Check validation
     if (!isValid) {
         return res.status(400).json(errors);
     }
@@ -57,7 +57,7 @@ router.post("/register", (req, res) => {
             username: req.body.username,
             email: req.body.email,
             password: req.body.password,
-            age : req.body.age
+            age: req.body.age
         });
         // Hash password before saving in database
         bcrypt.genSalt(10, (err, salt) => {
@@ -100,8 +100,9 @@ router.post("/login", (req, res) => {
     //     }
     // });
 
-    const { errors, isValid } = validateLoginInput(req.body);
-// Check validation
+    const {errors, isValid} = validateLoginInput(req.body);
+
+    // Check validation
     if (!isValid) {
         return res.status(400).json(errors);
     }
@@ -118,7 +119,8 @@ router.post("/login", (req, res) => {
                 // Create JWT Payload
                 const payload = {
                     id: user.id,
-                    username: user.username
+                    username: user.username,
+                    email: user.email
                 };
                 // Sign token
                 jwt.sign(
